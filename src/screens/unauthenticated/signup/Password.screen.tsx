@@ -5,14 +5,14 @@ import { Button, Center, Heading, Input, Text } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.stack';
+import { SignupStackParamList } from '../../../navigation/signup.stack';
 
 const PasswordSchema = Yup.object().shape({
   password: Yup.string().min(6).required(),
 });
 
 interface Props
-  extends NativeStackScreenProps<UnauthenticatedStackParamList, 'Password'> {}
+  extends NativeStackScreenProps<SignupStackParamList, 'Password'> {}
 
 const PasswordScreen = ({ navigation }: Props) => {
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({

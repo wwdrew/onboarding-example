@@ -2,12 +2,15 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, Center, Heading, Link } from 'native-base';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.stack';
+
+import { SignupStackParamList } from '../../../navigation/signup.stack';
+import { CompositeScreenProps } from '@react-navigation/core';
+import { UnauthenticatedStackParamList } from '../../../navigation/unauthenticated.stack';
 
 interface Props
-  extends NativeStackScreenProps<
-    UnauthenticatedStackParamList,
-    'Confirmation'
+  extends CompositeScreenProps<
+    NativeStackScreenProps<SignupStackParamList, 'Confirmation'>,
+    NativeStackScreenProps<UnauthenticatedStackParamList>
   > {}
 
 const ConfirmationScreen = ({ navigation }: Props) => (

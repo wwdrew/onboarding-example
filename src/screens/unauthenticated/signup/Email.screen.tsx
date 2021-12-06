@@ -5,14 +5,13 @@ import { Button, Center, Heading, Input, Text } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.stack';
+import { SignupStackParamList } from '../../../navigation/signup.stack';
 
 const EmailSchema = Yup.object().shape({
   email: Yup.string().email().required(),
 });
 
-interface Props
-  extends NativeStackScreenProps<UnauthenticatedStackParamList, 'Email'> {}
+interface Props extends NativeStackScreenProps<SignupStackParamList, 'Email'> {}
 
 const EmailScreen = ({ navigation }: Props) => {
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({

@@ -14,7 +14,11 @@ const WelcomeScreen = ({ navigation }: Props) => (
     <Text textAlign="center">
       The fastest way to make money on the Internet...
     </Text>
-    <Button onPress={() => navigation.navigate('Name')}>
+    <Button
+      onPress={() =>
+        navigation.push('Signup', { screen: 'Name', initial: false })
+      }
+    >
       Sign up to Make it Rain!
     </Button>
     <Link onPress={() => navigation.navigate('Login')}>
