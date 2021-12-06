@@ -1,12 +1,18 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Center, Heading, Text } from 'native-base';
+import { Button, Center, Heading, Input } from 'native-base';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.stack';
 
-const EmailScreen = () => (
+interface Props
+  extends NativeStackScreenProps<UnauthenticatedStackParamList, 'Email'> {}
+
+const EmailScreen = ({ navigation }: Props) => (
   <Center flex={1} px={4}>
     <StatusBar style="auto" />
     <Heading>Email Address</Heading>
-    <Text textAlign="center">Real content coming soon</Text>
+    <Input variant="underlined" placeholder="email address" />
+    <Button onPress={() => navigation.navigate('Password')}>Continue</Button>
   </Center>
 );
 
