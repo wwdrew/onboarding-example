@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { SignupStackParamList } from '../../../navigation/signup.stack';
+import useSignup from '../../../hooks/useSignup';
 
 const NameSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -14,11 +15,13 @@ const NameSchema = Yup.object().shape({
 interface Props extends NativeStackScreenProps<SignupStackParamList, 'Name'> {}
 
 const NameScreen = ({ navigation }: Props) => {
+  const { update } = useSignup();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       name: '',
     },
-    onSubmit: () => {
+    onSubmit: ({ name }) => {
+      update({ name });
       navigation.navigate('Email');
     },
     validationSchema: NameSchema,

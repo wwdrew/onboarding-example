@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { SignupStackParamList } from '../../../navigation/signup.stack';
+import useSignup from '../../../hooks/useSignup';
 
 const EmailSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -14,11 +15,13 @@ const EmailSchema = Yup.object().shape({
 interface Props extends NativeStackScreenProps<SignupStackParamList, 'Email'> {}
 
 const EmailScreen = ({ navigation }: Props) => {
+  const { update } = useSignup();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: '',
     },
-    onSubmit: () => {
+    onSubmit: ({ email }) => {
+      update({ email });
       navigation.navigate('Password');
     },
     validationSchema: EmailSchema,
