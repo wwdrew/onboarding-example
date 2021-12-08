@@ -45,7 +45,7 @@ const EmailScreen = ({ navigation }: Props) => {
         onChangeText={handleChange('email')}
         onBlur={handleBlur('email')}
       />
-      {errors.email && <Text w="full">Email address invalid</Text>}
+      {errors.email && <Text w="full">{errors.email}</Text>}
 
       <Button onPress={() => handleSubmit()} w="full">
         Continue

@@ -44,7 +44,7 @@ const PasswordScreen = ({ navigation }: Props) => {
         onChangeText={handleChange('password')}
         onBlur={handleBlur('password')}
       />
-      {errors.password && <Text w="full">Password invalid</Text>}
+      {errors.password && <Text w="full">{errors.password}</Text>}
 
       <Button onPress={() => handleSubmit()} w="full">
         Continue

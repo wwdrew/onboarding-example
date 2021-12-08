@@ -42,7 +42,7 @@ const NameScreen = ({ navigation }: Props) => {
         onChangeText={handleChange('name')}
         onBlur={handleBlur('name')}
       />
-      {errors.name && <Text w="full">Email address invalid</Text>}
+      {errors.name && <Text w="full">{errors.name}</Text>}
 
       <Button onPress={() => handleSubmit()} w="full">
         Continue
