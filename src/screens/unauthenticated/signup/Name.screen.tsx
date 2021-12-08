@@ -14,14 +14,21 @@ const NameSchema = Yup.object().shape({
 
 interface Props extends NativeStackScreenProps<SignupStackParamList, 'Name'> {}
 
-const NameScreen = ({ navigation }: Props) => {
-  const { update } = useSignup();
+const NameScreen = ({ navigation, route }: Props) => {
+  const { edit } = route.params ?? { edit: false };
+  const { state, update } = useSignup();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
-      name: '',
+      name: state.name,
     },
     onSubmit: ({ name }) => {
       update({ name });
+
+      if (edit) {
+        navigation.goBack();
+        return;
+      }
+
       navigation.navigate('Email');
     },
     validationSchema: NameSchema,
@@ -45,7 +52,7 @@ const NameScreen = ({ navigation }: Props) => {
       {errors.name && <Text w="full">{errors.name}</Text>}
 
       <Button onPress={() => handleSubmit()} w="full">
-        Continue
+        {edit ? 'Save' : 'Continue'}
       </Button>
     </Center>
   );

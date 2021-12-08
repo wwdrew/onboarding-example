@@ -14,14 +14,21 @@ const EmailSchema = Yup.object().shape({
 
 interface Props extends NativeStackScreenProps<SignupStackParamList, 'Email'> {}
 
-const EmailScreen = ({ navigation }: Props) => {
-  const { update } = useSignup();
+const EmailScreen = ({ navigation, route }: Props) => {
+  const { edit } = route.params ?? { edit: false };
+  const { state, update } = useSignup();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
-      email: '',
+      email: state.email,
     },
     onSubmit: ({ email }) => {
       update({ email });
+
+      if (edit) {
+        navigation.goBack();
+        return;
+      }
+
       navigation.navigate('Password');
     },
     validationSchema: EmailSchema,
@@ -48,7 +55,7 @@ const EmailScreen = ({ navigation }: Props) => {
       {errors.email && <Text w="full">{errors.email}</Text>}
 
       <Button onPress={() => handleSubmit()} w="full">
-        Continue
+        {edit ? 'Save' : 'Continue'}
       </Button>
     </Center>
   );

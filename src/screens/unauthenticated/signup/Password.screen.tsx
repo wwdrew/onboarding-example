@@ -15,14 +15,21 @@ const PasswordSchema = Yup.object().shape({
 interface Props
   extends NativeStackScreenProps<SignupStackParamList, 'Password'> {}
 
-const PasswordScreen = ({ navigation }: Props) => {
-  const { update } = useSignup();
+const PasswordScreen = ({ navigation, route }: Props) => {
+  const { edit } = route.params ?? { edit: false };
+  const { state, update } = useSignup();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
-      password: '',
+      password: state.password,
     },
     onSubmit: ({ password }) => {
       update({ password });
+
+      if (edit) {
+        navigation.goBack();
+        return;
+      }
+
       navigation.navigate('Confirmation');
     },
     validationSchema: PasswordSchema,
@@ -47,7 +54,7 @@ const PasswordScreen = ({ navigation }: Props) => {
       {errors.password && <Text w="full">{errors.password}</Text>}
 
       <Button onPress={() => handleSubmit()} w="full">
-        Continue
+        {edit ? 'Save' : 'Continue'}
       </Button>
     </Center>
   );

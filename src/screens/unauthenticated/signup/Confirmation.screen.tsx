@@ -1,6 +1,14 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Button, Center, Container, Heading, Link, Text } from 'native-base';
+import {
+  Box,
+  Button,
+  Center,
+  Container,
+  Heading,
+  Link,
+  Text,
+} from 'native-base';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { SignupStackParamList } from '../../../navigation/signup.stack';
@@ -17,21 +25,58 @@ interface Props
 const ConfirmationScreen = ({ navigation }: Props) => {
   const { state } = useSignup();
 
+  const onNameEditPress = () => {
+    navigation.push('Name', { edit: true });
+  };
+
+  const onEmailEditPress = () => {
+    navigation.push('Email', { edit: true });
+  };
+
+  const onPasswordEditPress = () => {
+    navigation.push('Password', { edit: true });
+  };
+
   return (
     <Center flex={1} px={4}>
       <StatusBar style="auto" />
       <Heading>Confirm Your Details</Heading>
-      <Container w="full">
-        <Text>Name</Text>
-        <Text>{state.name}</Text>
+
+      <Container
+        w="full"
+        justifyContent="space-between"
+        alignItems="center"
+        flexDirection="row"
+      >
+        <Box>
+          <Text>Name</Text>
+          <Text>{state.name}</Text>
+        </Box>
+        <Link onPress={onNameEditPress}>Edit</Link>
       </Container>
-      <Container w="full">
-        <Text>Email</Text>
-        <Text>{state.email}</Text>
+      <Container
+        w="full"
+        justifyContent="space-between"
+        alignItems="center"
+        flexDirection="row"
+      >
+        <Box>
+          <Text>Email</Text>
+          <Text>{state.email}</Text>
+        </Box>
+        <Link onPress={onEmailEditPress}>Edit</Link>
       </Container>
-      <Container w="full">
-        <Text>Password</Text>
-        <Text>*******</Text>
+      <Container
+        w="full"
+        justifyContent="space-between"
+        alignItems="center"
+        flexDirection="row"
+      >
+        <Box>
+          <Text>Password</Text>
+          <Text>*******</Text>
+        </Box>
+        <Link onPress={onPasswordEditPress}>Edit</Link>
       </Container>
       <Button onPress={() => console.log('Accept')}>Accept and Continue</Button>
       <Link onPress={() => navigation.navigate('Welcome')}>

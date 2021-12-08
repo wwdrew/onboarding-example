@@ -9,9 +9,9 @@ import { SignupProvider } from '../hooks/useSignup';
 
 export type SignupStackParamList = {
   Confirmation: undefined;
-  Email: undefined;
-  Name: undefined;
-  Password: undefined;
+  Email: { edit: boolean } | undefined;
+  Name: { edit: boolean } | undefined;
+  Password: { edit: boolean } | undefined;
 };
 
 const Signup = createNativeStackNavigator<SignupStackParamList>();
@@ -19,7 +19,13 @@ const Signup = createNativeStackNavigator<SignupStackParamList>();
 const SignupStack = () => (
   <SignupProvider>
     <Signup.Navigator initialRouteName="Name">
-      <Signup.Screen name="Confirmation" component={ConfirmationScreen} />
+      <Signup.Screen
+        name="Confirmation"
+        component={ConfirmationScreen}
+        options={{
+          headerBackVisible: false,
+        }}
+      />
       <Signup.Screen name="Email" component={EmailScreen} />
       <Signup.Screen name="Name" component={NameScreen} />
       <Signup.Screen name="Password" component={PasswordScreen} />
