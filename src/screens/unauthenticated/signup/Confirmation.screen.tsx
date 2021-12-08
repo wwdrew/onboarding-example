@@ -9,10 +9,10 @@ import {
   Link,
   Text,
 } from 'native-base';
+import { CompositeScreenProps } from '@react-navigation/core';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { SignupStackParamList } from '../../../navigation/signup.stack';
-import { CompositeScreenProps } from '@react-navigation/core';
 import { UnauthenticatedStackParamList } from '../../../navigation/unauthenticated.stack';
 import useSignup from '../../../hooks/useSignup';
 
@@ -23,7 +23,7 @@ interface Props
   > {}
 
 const ConfirmationScreen = ({ navigation }: Props) => {
-  const { state } = useSignup();
+  const { createUser, state } = useSignup();
 
   const onNameEditPress = () => {
     navigation.push('Name', { edit: true });
@@ -35,6 +35,10 @@ const ConfirmationScreen = ({ navigation }: Props) => {
 
   const onPasswordEditPress = () => {
     navigation.push('Password', { edit: true });
+  };
+
+  const onAcceptAndContinuePress = () => {
+    createUser(state);
   };
 
   return (
@@ -78,7 +82,9 @@ const ConfirmationScreen = ({ navigation }: Props) => {
         </Box>
         <Link onPress={onPasswordEditPress}>Edit</Link>
       </Container>
-      <Button onPress={() => console.log('Accept')}>Accept and Continue</Button>
+
+      <Button onPress={onAcceptAndContinuePress}>Accept and Continue</Button>
+
       <Link onPress={() => navigation.navigate('Welcome')}>
         You know what? Forget it...
       </Link>
