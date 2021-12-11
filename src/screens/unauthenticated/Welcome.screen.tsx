@@ -16,7 +16,7 @@ const WelcomeScreen = ({ navigation }: Props) => (
     </Text>
     <Button
       onPress={() =>
-        navigation.push('Signup', { screen: 'Name', initial: false })
+        navigation.navigate('Signup', { screen: 'Name', initial: false })
       }
     >
       Sign up to Make it Rain!
