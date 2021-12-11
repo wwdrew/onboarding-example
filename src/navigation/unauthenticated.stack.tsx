@@ -28,7 +28,13 @@ const UnauthenticatedStack = () => (
       name="ForgotPassword"
       component={ForgotPasswordScreen}
     />
-    <Unauthenticated.Screen name="Login" component={LoginScreen} />
+    <Unauthenticated.Screen
+      name="Login"
+      component={LoginScreen}
+      options={{
+        headerShown: true,
+      }}
+    />
     <Unauthenticated.Screen name="Signup" component={SignupStack} />
     <Unauthenticated.Screen name="Welcome" component={WelcomeScreen} />
   </Unauthenticated.Navigator>
