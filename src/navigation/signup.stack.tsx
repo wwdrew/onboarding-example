@@ -6,6 +6,7 @@ import ConfirmationScreen from '../screens/unauthenticated/signup/Confirmation.s
 import NameScreen from '../screens/unauthenticated/signup/Name.screen';
 import PasswordScreen from '../screens/unauthenticated/signup/Password.screen';
 import { SignupProvider } from '../hooks/useSignup';
+import { Pressable, Text } from 'react-native';
 
 export type SignupStackParamList = {
   Confirmation: undefined;
@@ -27,7 +28,17 @@ const SignupStack = () => (
         }}
       />
       <Signup.Screen name="Email" component={EmailScreen} />
-      <Signup.Screen name="Name" component={NameScreen} />
+      <Signup.Screen
+        name="Name"
+        component={NameScreen}
+        options={({ navigation }) => ({
+          headerLeft: () => (
+            <Pressable onPress={() => navigation.goBack()}>
+              <Text>Back</Text>
+            </Pressable>
+          ),
+        })}
+      />
       <Signup.Screen name="Password" component={PasswordScreen} />
     </Signup.Navigator>
   </SignupProvider>
