@@ -15,7 +15,7 @@ const LoginSchema = Yup.object().shape({
 interface Props
   extends NativeStackScreenProps<UnauthenticatedStackParamList, 'Login'> {}
 
-const LoginScreen = ({ navigation }: Props) => {
+function LoginScreen({ navigation }: Props) {
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: '',
@@ -71,6 +71,6 @@ const LoginScreen = ({ navigation }: Props) => {
       </Link>
     </Center>
   );
-};
+}
 
 export default LoginScreen;

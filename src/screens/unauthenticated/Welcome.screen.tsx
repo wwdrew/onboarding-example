@@ -7,20 +7,21 @@ import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.
 interface Props
   extends NativeStackScreenProps<UnauthenticatedStackParamList, 'Welcome'> {}
 
-const WelcomeScreen = ({ navigation }: Props) => (
-  <Center flex={1} px={4}>
-    <StatusBar style="auto" />
-    <Heading>Drew's Awesome App!</Heading>
-    <Text textAlign="center">
-      The fastest way to make money on the Internet...
-    </Text>
-    <Button onPress={() => navigation.navigate('Signup', { screen: 'Name' })}>
-      Sign up to Make it Rain!
-    </Button>
-    <Link onPress={() => navigation.navigate('Login')}>
-      ... or sign in if it's already raining for you
-    </Link>
-  </Center>
-);
-
+function WelcomeScreen({ navigation }: Props) {
+  return (
+    <Center flex={1} px={4}>
+      <StatusBar style="auto" />
+      <Heading>Drew's Awesome App!</Heading>
+      <Text textAlign="center">
+        The fastest way to make money on the Internet...
+      </Text>
+      <Button onPress={() => navigation.navigate('Signup', { screen: 'Name' })}>
+        Sign up to Make it Rain!
+      </Button>
+      <Link onPress={() => navigation.navigate('Login')}>
+        ... or sign in if it's already raining for you
+      </Link>
+    </Center>
+  );
+}
 export default WelcomeScreen;

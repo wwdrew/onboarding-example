@@ -17,7 +17,7 @@ interface Props
     'ForgotPassword'
   > {}
 
-const ForgotPasswordScreen = ({ navigation }: Props) => {
+function ForgotPasswordScreen({ navigation }: Props) {
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: '',
@@ -53,6 +53,6 @@ const ForgotPasswordScreen = ({ navigation }: Props) => {
       </Button>
     </Center>
   );
-};
+}
 
 export default ForgotPasswordScreen;

@@ -22,7 +22,7 @@ interface Props
     NativeStackScreenProps<UnauthenticatedStackParamList>
   > {}
 
-const ConfirmationScreen = ({ navigation }: Props) => {
+function ConfirmationScreen({ navigation }: Props) {
   const { createUser, state } = useSignup();
 
   const onNameEditPress = () => {
@@ -90,6 +90,6 @@ const ConfirmationScreen = ({ navigation }: Props) => {
       </Link>
     </Center>
   );
-};
+}
 
 export default ConfirmationScreen;
