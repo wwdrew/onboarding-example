@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { SignupStackParamList } from '../../../navigation/signup.stack';
-import useSignup from '../../../hooks/useSignup';
+import { useSignup } from '../../../modules/signup';
 
 const PasswordSchema = Yup.object().shape({
   password: Yup.string().min(6).required(),

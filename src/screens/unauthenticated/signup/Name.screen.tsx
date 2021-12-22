@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { SignupStackParamList } from '../../../navigation/signup.stack';
-import useSignup from '../../../hooks/useSignup';
+import { useSignup } from '../../../modules/signup';
 
 const NameSchema = Yup.object().shape({
   name: Yup.string().required(),

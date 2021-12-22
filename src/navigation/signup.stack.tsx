@@ -5,8 +5,8 @@ import EmailScreen from '../screens/unauthenticated/signup/Email.screen';
 import ConfirmationScreen from '../screens/unauthenticated/signup/Confirmation.screen';
 import NameScreen from '../screens/unauthenticated/signup/Name.screen';
 import PasswordScreen from '../screens/unauthenticated/signup/Password.screen';
-import { SignupProvider } from '../hooks/useSignup';
 import { Pressable, Text } from 'react-native';
+import { SignupProvider } from '../modules/signup';
 
 export type SignupStackParamList = {
   Confirmation: undefined;

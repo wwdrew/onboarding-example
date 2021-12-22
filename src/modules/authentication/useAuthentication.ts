@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AuthenticationContext } from './authenticationProvider';
+import { AuthenticationContext } from './authenticationContext';
 
 interface UseAuthenticationHook {
   authenticated: boolean;
@@ -8,7 +8,5 @@ interface UseAuthenticationHook {
 
 export const useAuthentication = (): UseAuthenticationHook =>
   useContext(AuthenticationContext);
-
-export { AuthenticationProvider } from './authenticationProvider';
 
 export default useAuthentication;

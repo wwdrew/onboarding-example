@@ -1,16 +1,16 @@
 import { useContext } from 'react';
-import { useAuthentication } from '../useAuthentication';
+import { useAuthentication } from '../../modules/authentication';
 import {
   SignupContext,
   SignupContextValues,
   SignupState,
-} from './signupProvider';
+} from './signupContext';
 
 interface UseSignupHook extends SignupContextValues {
   createUser: (userValues: SignupState) => void;
 }
 
-const useSignup = (): UseSignupHook => {
+export const useSignup = (): UseSignupHook => {
   const { state, update } = useContext(SignupContext);
   const { setAuthenticated } = useAuthentication();
 
@@ -25,7 +25,3 @@ const useSignup = (): UseSignupHook => {
     update,
   };
 };
-
-export { SignupProvider } from './signupProvider';
-
-export default useSignup;

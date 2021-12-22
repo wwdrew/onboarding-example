@@ -1,16 +1,5 @@
-import React, { createContext, ReactNode, useState } from 'react';
-
-export type AuthenticationContextValues = {
-  authenticated: boolean;
-  setAuthenticated: (value: boolean) => void;
-};
-
-export const AuthenticationContext = createContext<AuthenticationContextValues>(
-  {
-    authenticated: false,
-    setAuthenticated: () => undefined,
-  },
-);
+import React, { ReactNode, useState } from 'react';
+import { AuthenticationContext } from './authenticationContext';
 
 interface AuthenticatedProviderProps {
   children: ReactNode;

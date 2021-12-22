@@ -1,4 +1,5 @@
-import React, { createContext, ReactNode, useReducer } from 'react';
+import React, { ReactNode, useReducer } from 'react';
+import { initialState, SignupContext, SignupState } from './signupContext';
 
 type ReducerAction<Action, Payload = undefined> = Payload extends undefined
   ? { type: Action }
@@ -7,28 +8,6 @@ type ReducerAction<Action, Payload = undefined> = Payload extends undefined
 type UpdateSignupAction = ReducerAction<'UPDATE', Partial<SignupState>>;
 
 type SignupAction = UpdateSignupAction;
-
-export type SignupState = {
-  name: string;
-  email: string;
-  password: string;
-};
-
-export type SignupContextValues = {
-  state: SignupState;
-  update: (values: Partial<SignupState>) => void;
-};
-
-const initialState: SignupState = {
-  name: '',
-  email: '',
-  password: '',
-};
-
-export const SignupContext = createContext<SignupContextValues>({
-  state: initialState,
-  update: () => {},
-});
 
 interface SignupProviderProps {
   children: ReactNode;
