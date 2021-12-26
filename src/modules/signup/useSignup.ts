@@ -11,7 +11,13 @@ interface UseSignupHook extends SignupContextValues {
 }
 
 export const useSignup = (): UseSignupHook => {
-  const { state, update } = useContext(SignupContext);
+  const context = useContext(SignupContext);
+
+  if (!context) {
+    throw new Error('useSignup must be used within an SignupProvider');
+  }
+
+  const { state, update } = context;
   const { setAuthenticated } = useAuthentication();
 
   const createUser = (userValues: SignupState) => {
