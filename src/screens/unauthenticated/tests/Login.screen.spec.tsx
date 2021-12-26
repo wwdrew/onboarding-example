@@ -33,27 +33,70 @@ describe('Login Screen', () => {
 
     fireEvent.press(getByText(/forgotten your password/i));
 
-    expect(getByText(/forgot Your password?/i)).toBeDefined();
+    expect(getByText(/forgot your password?/i)).toBeDefined();
   });
 
   it('should work', async () => {
     const Stack = createNativeStackNavigator();
 
-    const { getByText, getByPlaceholderText } = render(
+    const { getByText, getByPlaceholderText, queryByText } = render(
       <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginScreen} />
       </Stack.Navigator>,
     );
 
-    const emailField = getByPlaceholderText(/email address/i);
-    const passwordField = getByPlaceholderText(/password/i);
+    fireEvent.changeText(
+      getByPlaceholderText(/email address/i),
+      'test@test.com',
+    );
+    fireEvent.changeText(getByPlaceholderText(/password/i), 'testPassword');
+    fireEvent.press(getByText(/continue/i));
 
     await waitFor(() => {
-      fireEvent.changeText(emailField, 'test@test.com');
-      fireEvent.changeText(passwordField, 'testPassword');
-      fireEvent.press(getByText(/continue/i));
+      expect(queryByText(/email address invalid/i)).toBeNull();
+      expect(queryByText(/password invalid/i)).toBeNull();
+    });
+  });
+
+  describe('invalid form values', () => {
+    describe('email field', () => {
+      it('should not accept an invalid email address', async () => {
+        const Stack = createNativeStackNavigator();
+
+        const { getByText, getByPlaceholderText } = render(
+          <Stack.Navigator>
+            <Stack.Screen name="Login" component={LoginScreen} />
+          </Stack.Navigator>,
+        );
+
+        const emailField = getByPlaceholderText(/email address/i);
+
+        fireEvent.changeText(emailField, 'invalidEmailAddress');
+
+        await waitFor(() => {
+          expect(getByText(/email address invalid/i)).toBeDefined();
+        });
+      });
     });
 
-    // debug();
+    describe('password field', () => {
+      it('should not accept an invalid password', async () => {
+        const Stack = createNativeStackNavigator();
+
+        const { getByText, getByPlaceholderText } = render(
+          <Stack.Navigator>
+            <Stack.Screen name="Login" component={LoginScreen} />
+          </Stack.Navigator>,
+        );
+
+        const passwordField = getByPlaceholderText(/password/i);
+
+        fireEvent.changeText(passwordField, 'nope');
+
+        await waitFor(() => {
+          expect(getByText(/password too short/i)).toBeDefined();
+        });
+      });
+    });
   });
 });

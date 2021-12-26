@@ -23,7 +23,7 @@ function ForgotPasswordScreen({ navigation }: Props) {
       email: '',
     },
     onSubmit: () => {
-      navigation.goBack();
+      navigation.navigate('Login');
     },
     validationSchema: ForgotPasswordSchema,
   });

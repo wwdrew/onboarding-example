@@ -1,9 +1,10 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { render } from '../../../../jest/test-utils';
+import { fireEvent, render, waitFor } from '../../../../jest/test-utils';
 
 import ForgotPasswordScreen from '../ForgotPassword.screen';
 import { UnauthenticatedStackParamList } from '../../../navigation/unauthenticated.stack';
+import LoginScreen from '../Login.screen';
 
 describe('ForgotPassword Screen', () => {
   it('should display forgot password text on screen', () => {
@@ -18,33 +19,49 @@ describe('ForgotPassword Screen', () => {
     expect(getByText(/forgot your password?/i)).toBeDefined();
   });
 
-  // it('should navigate to forgotten password screen', () => {
-  //   const Stack = createNativeStackNavigator();
+  it('should navigate to login screen after entering email address', async () => {
+    const Stack = createNativeStackNavigator();
 
-  //   const { getByText } = render(
-  //     <Stack.Navigator>
-  //       <Stack.Screen name="Login" component={LoginScreen} />
-  //       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
-  //     </Stack.Navigator>,
-  //   );
+    const { getByText, getByPlaceholderText } = render(
+      <Stack.Navigator>
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Navigator>,
+    );
 
-  //   fireEvent.press(getByText(/forgotten your password/i));
+    fireEvent.changeText(
+      getByPlaceholderText(/email address/i),
+      'test@test.com',
+    );
+    fireEvent.press(getByText(/continue/i));
 
-  //   expect(getByText(/forgot Your password?/i)).toBeDefined();
-  // });
+    await waitFor(() => {
+      expect(getByText(/login/i)).toBeDefined();
+    });
+  });
 
-  // it('should navigate to login screen', () => {
-  //   const Stack = createNativeStackNavigator();
+  describe('invalid form values', () => {
+    describe('email field', () => {
+      it('should not accept an invalid email address', async () => {
+        const Stack = createNativeStackNavigator();
 
-  //   const { getByText } = render(
-  //     <Stack.Navigator>
-  //       <Stack.Screen name="Welcome" component={WelcomeScreen} />
-  //       <Stack.Screen name="Login" component={LoginScreen} />
-  //     </Stack.Navigator>,
-  //   );
+        const { getByText, getByPlaceholderText } = render(
+          <Stack.Navigator>
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPasswordScreen}
+            />
+          </Stack.Navigator>,
+        );
 
-  //   fireEvent.press(getByText(/sign in/i));
+        const emailField = getByPlaceholderText(/email address/i);
 
-  //   expect(getByText(/login/i)).toBeDefined();
-  // });
+        fireEvent.changeText(emailField, 'invalidEmailAddress');
+
+        await waitFor(() => {
+          expect(getByText(/email address invalid/i)).toBeDefined();
+        });
+      });
+    });
+  });
 });

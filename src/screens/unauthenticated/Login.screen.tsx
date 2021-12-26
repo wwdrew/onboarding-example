@@ -9,7 +9,7 @@ import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email().required(),
-  password: Yup.string().min(6).required(),
+  password: Yup.string().min(6, 'Password too short').required(),
 });
 
 interface Props
@@ -25,6 +25,10 @@ function LoginScreen({ navigation }: Props) {
       console.log('Login');
     },
     validationSchema: LoginSchema,
+  });
+
+  console.log({
+    errors: { email: errors.email, password: errors.password },
   });
 
   return (
@@ -60,9 +64,14 @@ function LoginScreen({ navigation }: Props) {
         onChangeText={handleChange('password')}
         onBlur={handleBlur('password')}
       />
-      {errors.password && <Text w="full">Password invalid</Text>}
+      {errors.password && <Text w="full">{errors.password}</Text>}
 
-      <Button onPress={() => handleSubmit()} mb="2" w="full">
+      <Button
+        disabled={!!errors}
+        onPress={() => handleSubmit()}
+        mb="2"
+        w="full"
+      >
         Continue
       </Button>
 
