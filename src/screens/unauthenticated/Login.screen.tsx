@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.stack';
+import { useAuthentication } from '../../modules/authentication';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -16,19 +17,16 @@ interface Props
   extends NativeStackScreenProps<UnauthenticatedStackParamList, 'Login'> {}
 
 function LoginScreen({ navigation }: Props) {
+  const { setAuthenticated } = useAuthentication();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     onSubmit: () => {
-      console.log('Login');
+      setAuthenticated(true);
     },
     validationSchema: LoginSchema,
-  });
-
-  console.log({
-    errors: { email: errors.email, password: errors.password },
   });
 
   return (
@@ -67,7 +65,7 @@ function LoginScreen({ navigation }: Props) {
       {errors.password && <Text w="full">{errors.password}</Text>}
 
       <Button
-        disabled={!!errors}
+        disabled={Object.keys(errors).length > 0}
         onPress={() => handleSubmit()}
         mb="2"
         w="full"
