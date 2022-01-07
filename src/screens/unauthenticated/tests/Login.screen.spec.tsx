@@ -59,9 +59,30 @@ describe('Login Screen', () => {
 
     await waitFor(() => {
       expect(queryByText(/email address invalid/i)).toBeNull();
-      expect(queryByText(/password invalid/i)).toBeNull();
     });
+
+    expect(queryByText(/password invalid/i)).toBeNull();
     expect(continueButton).not.toBeDisabled();
+  });
+
+  it('should fail if no credentials are entered', async () => {
+    const Stack = createNativeStackNavigator();
+
+    const { getByText, queryByText } = render(
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Navigator>,
+    );
+
+    const continueButton = getByText(/continue/i);
+    fireEvent.press(continueButton);
+
+    await waitFor(() => {
+      expect(queryByText(/email address invalid/i)).toBeDefined();
+      expect(queryByText(/password invalid/i)).toBeDefined();
+    });
+
+    expect(continueButton).toBeDisabled();
   });
 
   describe('invalid form values', () => {
@@ -80,7 +101,7 @@ describe('Login Screen', () => {
           'invalidEmailAddress',
         );
 
-        expect(await findByText(/email address invalid/i)).toBeDefined();
+        expect(await findByText(/invalid email address/i)).toBeDefined();
         expect(getByText(/continue/i)).toBeDisabled();
       });
     });

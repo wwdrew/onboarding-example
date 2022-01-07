@@ -9,7 +9,7 @@ import { SignupStackParamList } from '../../../navigation/signup.stack';
 import { useSignup } from '../../../modules/signup';
 
 const NameSchema = Yup.object().shape({
-  name: Yup.string().required(),
+  name: Yup.string().required('A name is required'),
 });
 
 interface Props extends NativeStackScreenProps<SignupStackParamList, 'Name'> {}
@@ -51,7 +51,11 @@ function NameScreen({ navigation, route }: Props) {
       />
       {errors.name && <Text w="full">{errors.name}</Text>}
 
-      <Button onPress={() => handleSubmit()} w="full">
+      <Button
+        disabled={Object.keys(errors).length > 0}
+        onPress={() => handleSubmit()}
+        w="full"
+      >
         {edit ? 'Save' : 'Continue'}
       </Button>
     </Center>

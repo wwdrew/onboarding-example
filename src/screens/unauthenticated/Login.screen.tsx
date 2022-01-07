@@ -9,8 +9,12 @@ import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.
 import { useAuthentication } from '../../modules/authentication';
 
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().email().required(),
-  password: Yup.string().min(6, 'Password too short').required(),
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('Email address is required'),
+  password: Yup.string()
+    .min(6, 'Password too short')
+    .required('Password is required'),
 });
 
 interface Props
@@ -48,7 +52,7 @@ function LoginScreen({ navigation }: Props) {
         onChangeText={handleChange('email')}
         onBlur={handleBlur('email')}
       />
-      {errors.email && <Text w="full">Email address invalid</Text>}
+      {errors.email && <Text w="full">{errors.email}</Text>}
 
       <Input
         mb="2"
