@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { fireEvent, render } from '../../../../jest/test-utils';
 
-import SignupStack from '../../../navigation/signup.stack';
+import { SignupStack } from '../../../modules/signup';
 import { UnauthenticatedStackParamList } from '../../../navigation/unauthenticated.stack';
 import LoginScreen from '../Login.screen';
 import WelcomeScreen from '../Welcome.screen';

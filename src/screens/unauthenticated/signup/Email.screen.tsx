@@ -5,8 +5,7 @@ import { Button, Center, Heading, Input, Text } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { SignupStackParamList } from '../../../navigation/signup.stack';
-import { useSignup } from '../../../modules/signup';
+import { SignupStackParamList, useSignup } from '../../../modules/signup';
 
 const EmailSchema = Yup.object().shape({
   email: Yup.string().email().required(),

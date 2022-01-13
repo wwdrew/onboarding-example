@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { useAuthentication } from '../../modules/authentication';
+import { useAuthentication } from '../../authentication';
 import {
   SignupContext,
   SignupContextValues,
   SignupState,
-} from './signupContext';
+} from '../context/signupContext';
 
 interface UseSignupHook extends SignupContextValues {
   createUser: (userValues: SignupState) => void;

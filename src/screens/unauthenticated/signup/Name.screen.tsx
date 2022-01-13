@@ -5,8 +5,7 @@ import { Button, Center, Heading, Input, Text } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { SignupStackParamList } from '../../../navigation/signup.stack';
-import { useSignup } from '../../../modules/signup';
+import { SignupStackParamList, useSignup } from '../../../modules/signup';
 
 const NameSchema = Yup.object().shape({
   name: Yup.string().required('A name is required'),

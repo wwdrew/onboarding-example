@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AuthenticationContext } from './authenticationContext';
+import { AuthenticationContext } from '../context/authenticationContext';
 
 interface UseAuthenticationHook {
   authenticated: boolean;

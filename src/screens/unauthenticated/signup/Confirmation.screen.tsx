@@ -12,9 +12,8 @@ import {
 import { CompositeScreenProps } from '@react-navigation/core';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { SignupStackParamList } from '../../../navigation/signup.stack';
+import { SignupStackParamList, useSignup } from '../../../modules/signup';
 import { UnauthenticatedStackParamList } from '../../../navigation/unauthenticated.stack';
-import { useSignup } from '../../../modules/signup';
 
 interface Props
   extends CompositeScreenProps<
