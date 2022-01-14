@@ -2,7 +2,8 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, Center, Heading, Link, Text } from 'native-base';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.stack';
+
+import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack';
 
 interface Props
   extends NativeStackScreenProps<UnauthenticatedStackParamList, 'Welcome'> {}

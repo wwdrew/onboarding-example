@@ -5,8 +5,8 @@ import { Button, Center, Heading, Input, Link, Text } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.stack';
-import { useAuthentication } from '../../modules/authentication';
+import { useAuthentication } from '@module/authentication';
+import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()

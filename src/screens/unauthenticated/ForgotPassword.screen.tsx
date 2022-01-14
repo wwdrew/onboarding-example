@@ -5,7 +5,7 @@ import { Button, Center, Heading, Input, Text } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { UnauthenticatedStackParamList } from '../../navigation/unauthenticated.stack';
+import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack';
 
 const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email().required(),

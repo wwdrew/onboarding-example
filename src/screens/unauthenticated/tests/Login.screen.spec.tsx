@@ -1,10 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { fireEvent, render, waitFor } from '../../../../jest/test-utils';
 
-import LoginScreen from '../Login.screen';
+import { fireEvent, render, waitFor } from '@jest/test-utils';
+import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack';
+
 import ForgotPasswordScreen from '../ForgotPassword.screen';
-import { UnauthenticatedStackParamList } from '../../../navigation/unauthenticated.stack';
+import LoginScreen from '../Login.screen';
 
 describe('Login Screen', () => {
   it('should display login form on screen', () => {

@@ -2,9 +2,10 @@ import React from 'react';
 import { NavigatorScreenParams } from '@react-navigation/core';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { SignupStack, SignupStackParamList } from '@module/signup';
+
 import ForgotPasswordScreen from '../screens/unauthenticated/ForgotPassword.screen';
 import LoginScreen from '../screens/unauthenticated/Login.screen';
-import { SignupStack, SignupStackParamList } from '../modules/signup';
 import WelcomeScreen from '../screens/unauthenticated/Welcome.screen';
 
 export type UnauthenticatedStackParamList = {

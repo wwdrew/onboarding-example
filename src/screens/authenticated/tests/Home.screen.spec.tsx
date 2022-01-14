@@ -1,9 +1,10 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { render } from '../../../../jest/test-utils';
+
+import { render } from '@jest/test-utils';
+import { AuthenticatedStackParamList } from '@navigation/authenticated.stack';
 
 import HomeScreen from '../Home.screen';
-import { AuthenticatedStackParamList } from '../../../navigation/authenticated.stack';
 
 describe('Home Screen', () => {
   it('should display home text on screen', () => {

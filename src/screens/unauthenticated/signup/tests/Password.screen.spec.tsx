@@ -1,8 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { SignupStackParamList } from '../../../../modules/signup';
-import { render } from '../../../../../jest/test-utils';
+import { render } from '@jest/test-utils';
+import { SignupStackParamList } from '@module/signup';
+
 import PasswordScreen from '../Password.screen';
 
 describe('Password Screen', () => {

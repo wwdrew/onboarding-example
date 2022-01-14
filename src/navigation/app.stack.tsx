@@ -7,7 +7,7 @@ import UnauthenticatedStack, {
 import AuthenticatedStack, {
   AuthenticatedStackParamList,
 } from './authenticated.stack';
-import { useAuthentication } from '../modules/authentication';
+import { useAuthentication } from '@module/authentication';
 
 export type RootStackParamList = {
   Unauthenticated: NavigatorScreenParams<UnauthenticatedStackParamList>;
