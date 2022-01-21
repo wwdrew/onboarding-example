@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { fireEvent, render, waitFor } from '@jest/test-utils';
+import { fireEvent, render, waitFor } from '@test/test-utils';
 import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack';
 
 import ForgotPasswordScreen from '../ForgotPassword.screen';
@@ -21,7 +21,7 @@ describe('ForgotPassword Screen', () => {
   });
 
   it('should navigate to login screen after entering email address', async () => {
-    const Stack = createNativeStackNavigator();
+    const Stack = createNativeStackNavigator<UnauthenticatedStackParamList>();
 
     const { getByText, getByPlaceholderText } = render(
       <Stack.Navigator>
@@ -44,7 +44,8 @@ describe('ForgotPassword Screen', () => {
   describe('invalid form values', () => {
     describe('email field', () => {
       it('should not accept an invalid email address', async () => {
-        const Stack = createNativeStackNavigator();
+        const Stack =
+          createNativeStackNavigator<UnauthenticatedStackParamList>();
 
         const { getByText, getByPlaceholderText } = render(
           <Stack.Navigator>

@@ -2,7 +2,10 @@ import React from 'react';
 import { NavigatorScreenParams } from '@react-navigation/core';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { SignupStack, SignupStackParamList } from '@module/signup';
+import {
+  SignupStack,
+  SignupStackParamList,
+} from '@module/signup/navigation/signup.stack';
 
 import ForgotPasswordScreen from '../screens/unauthenticated/ForgotPassword.screen';
 import LoginScreen from '../screens/unauthenticated/Login.screen';

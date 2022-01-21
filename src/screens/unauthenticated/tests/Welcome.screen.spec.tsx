@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { fireEvent, render } from '@jest/test-utils';
-import { SignupStack } from '@module/signup';
+import { fireEvent, render } from '@test/test-utils';
+import { SignupStack } from '@module/signup/navigation/signup.stack';
 import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack';
 
 import LoginScreen from '../Login.screen';
@@ -24,7 +24,7 @@ describe('Welcome Screen', () => {
   });
 
   it('should navigate to sign up screen', () => {
-    const Stack = createNativeStackNavigator();
+    const Stack = createNativeStackNavigator<UnauthenticatedStackParamList>();
 
     const { getByText } = render(
       <Stack.Navigator>
@@ -39,7 +39,7 @@ describe('Welcome Screen', () => {
   });
 
   it('should navigate to login screen', () => {
-    const Stack = createNativeStackNavigator();
+    const Stack = createNativeStackNavigator<UnauthenticatedStackParamList>();
 
     const { getByText } = render(
       <Stack.Navigator>

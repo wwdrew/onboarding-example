@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { fireEvent, render, waitFor } from '@jest/test-utils';
+import { fireEvent, render, waitFor } from '@test/test-utils';
 import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack';
 
 import ForgotPasswordScreen from '../ForgotPassword.screen';

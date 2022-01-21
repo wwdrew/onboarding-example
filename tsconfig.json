@@ -4,7 +4,7 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "@jest/*": ["jest/*"],
+      "@test/*": ["jest/*"],
       "@module/*": ["src/modules/*"],
       "@navigation/*": ["src/navigation/*"]
     }

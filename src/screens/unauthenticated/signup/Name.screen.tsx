@@ -4,8 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, Center, Heading, Input, Text } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
-import { SignupStackParamList, useSignup } from '@module/signup';
+import { SignupStackParamList } from '@module/signup/navigation/signup.stack';
+import { useSignup } from '@module/signup/hooks/useSignup';
 
 const NameSchema = Yup.object().shape({
   name: Yup.string().required('A name is required'),

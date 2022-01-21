@@ -4,8 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, Center, Heading, Input, Text } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
-import { SignupStackParamList, useSignup } from '@module/signup';
+import { useSignup } from '@module/signup/hooks/useSignup';
+import { SignupStackParamList } from '@module/signup/navigation/signup.stack';
 
 const PasswordSchema = Yup.object().shape({
   password: Yup.string().min(6).required(),

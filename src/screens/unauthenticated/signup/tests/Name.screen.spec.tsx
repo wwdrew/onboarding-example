@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { render, fireEvent } from '@jest/test-utils';
-import { SignupStackParamList } from '@module/signup';
+import { render, fireEvent } from '@test/test-utils';
+import { SignupStackParamList } from '@module/signup/navigation/signup.stack';
 
 import NameScreen from '../Name.screen';
 

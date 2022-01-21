@@ -1,12 +1,13 @@
 import React from 'react';
+import { Pressable, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { SignupProvider } from '../context/signupProvider';
 
 import EmailScreen from '../../../screens/unauthenticated/signup/Email.screen';
 import ConfirmationScreen from '../../../screens/unauthenticated/signup/Confirmation.screen';
 import NameScreen from '../../../screens/unauthenticated/signup/Name.screen';
 import PasswordScreen from '../../../screens/unauthenticated/signup/Password.screen';
-import { Pressable, Text } from 'react-native';
-import { SignupProvider } from '..';
 
 export type SignupStackParamList = {
   Confirmation: undefined;
