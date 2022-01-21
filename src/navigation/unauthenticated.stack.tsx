@@ -7,9 +7,9 @@ import {
   SignupStackParamList,
 } from '@module/signup/navigation/signup.stack';
 
-import ForgotPasswordScreen from '../screens/unauthenticated/ForgotPassword.screen';
-import LoginScreen from '../screens/unauthenticated/Login.screen';
-import WelcomeScreen from '../screens/unauthenticated/Welcome.screen';
+import { ForgotPasswordScreen } from '@screens/unauthenticated/ForgotPassword.screen';
+import { LoginScreen } from '@screens/unauthenticated/Login.screen';
+import { WelcomeScreen } from '@screens/unauthenticated/Welcome.screen';
 
 export type UnauthenticatedStackParamList = {
   ForgotPassword: undefined;

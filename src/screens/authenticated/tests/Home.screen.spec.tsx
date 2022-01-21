@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { render } from '@test/test-utils';
 import { AuthenticatedStackParamList } from '@navigation/authenticated.stack';
 
-import HomeScreen from '../Home.screen';
+import { HomeScreen } from '../Home.screen';
 
 describe('Home Screen', () => {
   it('should display home text on screen', () => {

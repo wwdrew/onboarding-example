@@ -11,6 +11,7 @@ module.exports = function (api) {
             '@test': './jest',
             '@module': './src/modules',
             '@navigation': './src/navigation',
+            '@screens': './src/screens',
           },
         },
       ],

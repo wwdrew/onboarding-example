@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { render } from '@test/test-utils';
 import { SignupStackParamList } from '@module/signup/navigation/signup.stack';
 
-import PasswordScreen from '../Password.screen';
+import { PasswordScreen } from '../Password.screen';
 
 describe('Password Screen', () => {
   it('should display password text on screen', () => {

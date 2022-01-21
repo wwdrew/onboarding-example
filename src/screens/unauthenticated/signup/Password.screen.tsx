@@ -14,7 +14,7 @@ const PasswordSchema = Yup.object().shape({
 interface Props
   extends NativeStackScreenProps<SignupStackParamList, 'Password'> {}
 
-function PasswordScreen({ navigation, route }: Props) {
+export function PasswordScreen({ navigation, route }: Props) {
   const { edit } = route.params ?? { edit: false };
   const { state, update } = useSignup();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -58,5 +58,3 @@ function PasswordScreen({ navigation, route }: Props) {
     </Center>
   );
 }
-
-export default PasswordScreen;

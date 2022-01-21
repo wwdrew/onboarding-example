@@ -4,10 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { SignupProvider } from '../context/signupProvider';
 
-import EmailScreen from '../../../screens/unauthenticated/signup/Email.screen';
-import ConfirmationScreen from '../../../screens/unauthenticated/signup/Confirmation.screen';
-import NameScreen from '../../../screens/unauthenticated/signup/Name.screen';
-import PasswordScreen from '../../../screens/unauthenticated/signup/Password.screen';
+import { ConfirmationScreen } from '@screens/unauthenticated/signup/Confirmation.screen';
+import { EmailScreen } from '@screens/unauthenticated/signup/Email.screen';
+import { NameScreen } from '@screens/unauthenticated/signup/Name.screen';
+import { PasswordScreen } from '@screens/unauthenticated/signup/Password.screen';
 
 export type SignupStackParamList = {
   Confirmation: undefined;

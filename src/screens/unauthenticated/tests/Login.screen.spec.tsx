@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { fireEvent, render, waitFor } from '@test/test-utils';
 import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack';
 
-import ForgotPasswordScreen from '../ForgotPassword.screen';
-import LoginScreen from '../Login.screen';
+import { ForgotPasswordScreen } from '../ForgotPassword.screen';
+import { LoginScreen } from '../Login.screen';
 
 describe('Login Screen', () => {
   it('should display login form on screen', () => {

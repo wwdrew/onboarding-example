@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from '../screens/authenticated/Home.screen';
+import { HomeScreen } from '@screens/authenticated/Home.screen';
 
 export type AuthenticatedStackParamList = {
   Home: undefined;

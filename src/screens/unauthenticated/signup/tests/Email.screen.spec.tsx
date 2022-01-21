@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { render } from '@test/test-utils';
 import { SignupStackParamList } from '@module/signup/navigation/signup.stack';
 
-import EmailScreen from '../Email.screen';
+import { EmailScreen } from '../Email.screen';
 
 describe('Email Screen', () => {
   it('should display email text on screen', () => {

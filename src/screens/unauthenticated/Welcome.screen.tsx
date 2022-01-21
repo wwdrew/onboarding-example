@@ -8,7 +8,7 @@ import { UnauthenticatedStackParamList } from '@navigation/unauthenticated.stack
 interface Props
   extends NativeStackScreenProps<UnauthenticatedStackParamList, 'Welcome'> {}
 
-function WelcomeScreen({ navigation }: Props) {
+export function WelcomeScreen({ navigation }: Props) {
   return (
     <Center flex={1} px={4}>
       <StatusBar style="auto" />
@@ -25,4 +25,3 @@ function WelcomeScreen({ navigation }: Props) {
     </Center>
   );
 }
-export default WelcomeScreen;

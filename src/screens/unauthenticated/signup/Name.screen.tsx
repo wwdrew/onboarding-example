@@ -13,7 +13,7 @@ const NameSchema = Yup.object().shape({
 
 interface Props extends NativeStackScreenProps<SignupStackParamList, 'Name'> {}
 
-function NameScreen({ navigation, route }: Props) {
+export function NameScreen({ navigation, route }: Props) {
   const { edit } = route.params ?? { edit: false };
   const { state, update } = useSignup();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -60,5 +60,3 @@ function NameScreen({ navigation, route }: Props) {
     </Center>
   );
 }
-
-export default NameScreen;

@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { render, fireEvent } from '@test/test-utils';
 import { SignupStackParamList } from '@module/signup/navigation/signup.stack';
 
-import NameScreen from '../Name.screen';
+import { NameScreen } from '../Name.screen';
 
 describe('Name Screen', () => {
   describe('normal mode', () => {

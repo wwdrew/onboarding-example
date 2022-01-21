@@ -13,7 +13,7 @@ const EmailSchema = Yup.object().shape({
 
 interface Props extends NativeStackScreenProps<SignupStackParamList, 'Email'> {}
 
-function EmailScreen({ navigation, route }: Props) {
+export function EmailScreen({ navigation, route }: Props) {
   const { edit } = route.params ?? { edit: false };
   const { state, update } = useSignup();
   const { errors, values, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -59,5 +59,3 @@ function EmailScreen({ navigation, route }: Props) {
     </Center>
   );
 }
-
-export default EmailScreen;

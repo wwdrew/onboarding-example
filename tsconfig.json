@@ -6,7 +6,8 @@
     "paths": {
       "@test/*": ["jest/*"],
       "@module/*": ["src/modules/*"],
-      "@navigation/*": ["src/navigation/*"]
+      "@navigation/*": ["src/navigation/*"],
+      "@screens/*": ["src/screens/*"]
     }
   }
 }
